@@ -1,5 +1,4 @@
 class ProjectController {
-
     async info (ctx, next) {
         ctx.body = { project: 'hk01-koa-project', name: 'prm-group'}
       }
