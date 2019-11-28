@@ -11,6 +11,7 @@
   "license": "ISC",
   "dependencies": {
     "cluster": "^0.7.7",
+    "dotenv": "^8.2.0",
     "glob": "^7.1.6",
     "ioredis": "^4.14.1",
     "koa": "^2.11.0",
