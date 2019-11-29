@@ -3,7 +3,7 @@ module.exports = {
     connections: {
       sqlite: {
         protocol:'sqlite',
-        database : global.VVENV('DB_DATABASE',`'${global.APP_PATH}/database/database.sqlite'`),
+        database : global.VVENV('DB_DATABASE',`${global.APP_PATH}/database/database.sqlite`),
         prefix : '',
         foreign_key_constraints : global.VVENV('DB_FOREIGN_KEYS', true),
       },
