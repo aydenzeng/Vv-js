@@ -6,4 +6,9 @@ module.exports = async router => {
     router.get('/',projectCtr.index);
     router.get('/session',projectCtr.session);
 
+    router.get('/db/create',projectCtr.dbCreate);
+    router.get('/db/get',projectCtr.dbGet);
+    router.get('/db/find_update',projectCtr.dbFindAndUpdate);
+
+
   }
