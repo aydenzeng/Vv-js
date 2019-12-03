@@ -1,5 +1,5 @@
 ### koa项目脚手架
-`参与https://github.com/mrtanweijie`
+
 ~~~
 启动：node src/server.js
 ~~~
@@ -11,7 +11,7 @@
 5. ☐ log日志支持
 6. ☑ model orm 支持 [相关文档](https://github.com/demopark/sequelize-docs-Zh-CN)
 7. ☐ event 支持
-8. ☐ migrate 支持 [相关文档](https://github.com/demopark/sequelize-docs-Zh-CN/blob/master/migrations.md)
+8. ☑ migrate 支持 [相关文档](https://github.com/demopark/sequelize-docs-Zh-CN/blob/master/migrations.md)
 
 ### 相关说明：
 
