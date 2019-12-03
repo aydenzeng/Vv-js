@@ -17,10 +17,10 @@ class ProjectController {
     }
     async dbGet(ctx)
     {
-      //具体使用方法参考https://github.com/demopark/sequelize-docs-Zh-CN/blob/master/models-usage.md
+      const id = ctx.params.id;
       let Person = ctx.models.Person
       // 搜索已知的id
-      let person1 = await Person.findByPk(2)
+      let person1 = await Person.findByPk(id)
       // 搜索属性
       let person2 =await Person.findOne({
         where: {name: 'John'},
@@ -29,6 +29,14 @@ class ProjectController {
       //搜索特定元素或创建它(如果不可用)
       let createResult = await Person.findOrCreate({where: {name: 'Zpming'}, defaults: {name: 'Zpming',surname:'pengming',age:18}})
       ctx.body = person1.name + ':' +person2.get('aliasName') +"---是否create新记录:"+createResult[1] + '---新的name:' + createResult[0].name
+    }
+
+    async dbPost(ctx)
+    {
+      let Person = ctx.models.Person
+      let postData = ctx.request.body
+      let returnC = await Person.create(postData)
+      ctx.body = returnC
     }
 
     async session (ctx, next) {
