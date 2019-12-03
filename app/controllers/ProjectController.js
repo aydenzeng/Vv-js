@@ -1,5 +1,5 @@
 class ProjectController {
-    async info (ctx, next) {
+     info (ctx, next) {
         ctx.body = { project: 'hk01-koa-project', name: 'prm-group'}
       }
 
@@ -11,35 +11,26 @@ class ProjectController {
     }
     async dbCreate(ctx, next){
       let Person = ctx.models.Person
-      Person.create({name: "John", surname: "Doe", age: 27 }, function(err) {
-        if (err) ctx.throw(500);
-      })
-      ctx.body = "asdfasdf"
+      console.log(Person)
+      ctx.body = "asdfsadf" 
+      
     }
-    async dbGet(ctx, next)
+    async dbGet(ctx)
     {
+      //具体使用方法参考https://github.com/demopark/sequelize-docs-Zh-CN/blob/master/models-usage.md
       let Person = ctx.models.Person
-      Person.get(2, function (err, person) {
-        console.log(person.name)
-       })
+      // 搜索已知的id
+      let person1 = await Person.findByPk(2)
+      // 搜索属性
+      let person2 =await Person.findOne({
+        where: {name: 'John'},
+        attributes: ['id',['name','aliasName'], 'surname','age']//定义别名
+      });
+      //搜索特定元素或创建它(如果不可用)
+      let createResult = await Person.findOrCreate({where: {name: 'Zpming'}, defaults: {name: 'Zpming',surname:'pengming',age:18}})
+      ctx.body = person1.name + ':' +person2.get('aliasName') +"---是否create新记录:"+createResult[1] + '---新的name:' + createResult[0].name
     }
 
-    async dbFindAndUpdate(ctx, next)
-    {
-      let Person = ctx.models.Person
-      Person.find({ surname: "Doe" }, function (err, people) {
-        // SQL: "SELECT * FROM person WHERE surname = 'Doe'"
-        if (err) throw err;
- 
-        console.log("People found: %d", people.length);
-        console.log("First person: %s, age %d", people[0].fullName(), people[0].age);
- 
-        people[0].age = 16;
-        people[0].save(function (err) {
-          // err.msg == "under-age";
-        });
-      });
-    }
     async session (ctx, next) {
       if (ctx.path === '/favicon.ico') return;
       let n = ctx.session.views || 0;
