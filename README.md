@@ -1,4 +1,4 @@
-### koa项目脚手架
+### Vvjs,一个很优秀的koa项目脚手架
 
 ~~~
 启动：node src/server.js
