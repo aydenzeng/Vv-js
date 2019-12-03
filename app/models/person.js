@@ -1,16 +1,15 @@
-const Sequelize = require('sequelize')
-module.exports.Person = db => {
-   let Person = db.define('person', {
+module.exports.Person = (sequelize, DataTypes) => {
+   let Person = sequelize.define('person', {
         name:{
-            type:Sequelize.STRING,
+            type:DataTypes.STRING,
             allowNull: false,
         },
         surname:{
-            type:Sequelize.STRING,
+            type:DataTypes.STRING,
             allowNull: true,
         },
         age:{
-            type:Sequelize.NUMBER,
+            type:DataTypes.NUMBER,
             allowNull: true,
         }
     });
