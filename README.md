@@ -1,5 +1,11 @@
 ### Vvjs,一个很优秀的koa项目脚手架
 
+### 安装启动
+
+1. cp .env.example .env
+2. npm install
+3. npm start -o
+
 ~~~
 启动：node src/server.js
 ~~~
