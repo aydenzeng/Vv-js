@@ -1,4 +1,4 @@
-const projectCtr = require('../app/controllers/ProjectController')
+const projectCtr = global.controller('ProjectController')
 module.exports = async router => {
     router.group("verifyToken2", () => {
         router.get('/project/info', projectCtr.info);
