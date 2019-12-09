@@ -4,4 +4,5 @@ module.exports = {
     port: global.VVENV('APP_PORT',3000),
     debug: global.VVENV('DEBUG',false),
     env: global.VVENV('ENV','production'),
+    baseurl:global.VVENV('APP_URL',''),
 }
