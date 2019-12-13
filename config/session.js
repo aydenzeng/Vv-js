@@ -1,3 +1,7 @@
+// memcached, redis, mysql example
+// Notice: Requires mysql 5.6 or grater for default value now()
+const {MemcachedStore, RedisStore, MysqlStore} = require('koa-session-store2');
+ 
 module.exports = {
     key: 'koa:sess', /** (string) cookie key (default is koa:sess) */
     /** (number || 'session') maxAge in ms (default is 1 days) */
@@ -8,6 +12,16 @@ module.exports = {
     overwrite: true, /** (boolean) can overwrite or not (default true) */
     httpOnly: true, /** (boolean) httpOnly or not (default true) */
     signed: true, /** (boolean) signed or not (default true) */
-    rolling: false, /** (boolean) Force a session identifier cookie to be set on every response. The expiration is reset to the original maxAge, resetting the expiration countdown. (default is false) */
-    renew: false, /** (boolean) renew session when session is nearly expired, so we can always keep user logged in. (default is false)*/  
+    rolling: false, /** (boolean) Force a session identifier cookie to be set on every response. The expiration is reset to the   original maxAge, resetting the expiration countdown. (default is false) */
+    renew: false, /** (boolean) renew session when session is nearly expired, so we can always keep user logged in. (default is false)*/
+    // store: new MemcachedStore(), /* defualt memcached config: localhost:11211 example: https://www.npmjs.com/package/memcached */
+    // store: new RedisStore(),
+    // store: new MysqlStore('t_', 
+    //     {
+    //       host     : '',
+    //       user     : '',
+    //       password : '',
+    //       database : ''
+    //     }
+    // ),
 }
